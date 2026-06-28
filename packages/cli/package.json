@@ -1,0 +1,23 @@
+{
+  "name": "@mcpforge/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "mcpforge": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm",
+    "dev": "tsup src/index.ts --format esm --watch",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mcpforge/core": "workspace:*",
+    "@inquirer/prompts": "latest",
+    "commander": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "tsup": "latest"
+  }
+}

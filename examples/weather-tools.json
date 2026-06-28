@@ -1,0 +1,67 @@
+{
+  "server": {
+    "name": "weather-mcp",
+    "version": "1.0.0",
+    "description": "Weather API MCP server",
+    "auth": {
+      "type": "api-key",
+      "envVariable": "WEATHER_API_KEY",
+      "headerName": "X-API-Key"
+    }
+  },
+  "tools": [
+    {
+      "name": "get_current_weather",
+      "description": "Get current weather for a city",
+      "parameters": [
+        {
+          "name": "city",
+          "type": "string",
+          "required": true,
+          "description": "City name"
+        },
+        {
+          "name": "units",
+          "type": "string",
+          "required": false,
+          "description": "Temperature units (metric or imperial)",
+          "enum": ["metric", "imperial"]
+        }
+      ],
+      "implementation": {
+        "method": "GET",
+        "url": "https://api.weather.com/v1/current",
+        "queryParams": {
+          "city": "{{city}}",
+          "units": "{{units}}"
+        }
+      }
+    },
+    {
+      "name": "get_forecast",
+      "description": "Get 5-day weather forecast",
+      "parameters": [
+        {
+          "name": "city",
+          "type": "string",
+          "required": true,
+          "description": "City name"
+        },
+        {
+          "name": "days",
+          "type": "number",
+          "required": false,
+          "description": "Number of days (1-5)"
+        }
+      ],
+      "implementation": {
+        "method": "GET",
+        "url": "https://api.weather.com/v1/forecast",
+        "queryParams": {
+          "city": "{{city}}",
+          "days": "{{days}}"
+        }
+      }
+    }
+  ]
+}

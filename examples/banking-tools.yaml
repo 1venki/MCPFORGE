@@ -1,0 +1,17 @@
+server:
+  name: banking-mcp
+  version: 1.0.0
+  auth:
+    type: bearer
+    envVariable: BANK_API_KEY
+
+tools:
+  - name: get_balance
+    description: Get balance for account
+    parameters:
+      - name: account_id
+        type: string
+        required: true
+    implementation:
+      method: GET
+      url: "https://api.mybank.com/accounts/{{account_id}}/balance"

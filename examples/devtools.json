@@ -1,0 +1,88 @@
+{
+  "server": {
+    "name": "devtools-mcp",
+    "version": "1.0.0",
+    "description": "Developer utility tools - HTTP, function, and script implementations"
+  },
+  "tools": [
+    {
+      "name": "fetch_github_user",
+      "description": "Fetch a GitHub user's public profile",
+      "parameters": [
+        {
+          "name": "username",
+          "type": "string",
+          "required": true,
+          "description": "GitHub username"
+        }
+      ],
+      "implementation": {
+        "type": "http",
+        "method": "GET",
+        "url": "https://api.github.com/users/{{username}}",
+        "headers": {
+          "Accept": "application/vnd.github.v3+json"
+        }
+      }
+    },
+    {
+      "name": "calculate_hash",
+      "description": "Calculate SHA-256 hash of input text",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "required": true,
+          "description": "Text to hash"
+        }
+      ],
+      "implementation": {
+        "type": "function",
+        "code": "const crypto = await import('crypto');\nconst hash = crypto.createHash('sha256').update(params.text).digest('hex');\nreturn { content: [{ type: 'text', text: hash }] };"
+      }
+    },
+    {
+      "name": "generate_uuid",
+      "description": "Generate a random UUID v4",
+      "parameters": [],
+      "implementation": {
+        "type": "function",
+        "code": "const crypto = await import('crypto');\nconst uuid = crypto.randomUUID();\nreturn { content: [{ type: 'text', text: uuid }] };"
+      }
+    },
+    {
+      "name": "list_files",
+      "description": "List files in a directory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": true,
+          "description": "Directory path to list"
+        }
+      ],
+      "implementation": {
+        "type": "script",
+        "command": "ls -la {{path}}",
+        "timeout": 5000
+      }
+    },
+    {
+      "name": "disk_usage",
+      "description": "Check disk usage of a path",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "description": "Path to check (defaults to current directory)"
+        }
+      ],
+      "implementation": {
+        "type": "script",
+        "command": "du -sh {{path}}",
+        "timeout": 10000
+      }
+    }
+  ]
+}

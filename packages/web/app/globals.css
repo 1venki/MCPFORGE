@@ -1,0 +1,118 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #0f1934 0%, #1a2654 50%, #0f1934 100%);
+  color: #e2e8f0;
+}
+
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero {
+  padding: 20px 0;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.subtitle {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.card {
+  background: rgba(30, 41, 75, 0.7);
+  border: 1px solid rgba(100, 116, 160, 0.25);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.uploadLabel {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.uploadRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fileName {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btnOutline {
+  background: rgba(51, 65, 105, 0.6);
+  border: 1px solid rgba(100, 116, 160, 0.4);
+  color: #e2e8f0;
+}
+
+.btnOutline:hover:not(:disabled) {
+  background: rgba(71, 85, 130, 0.8);
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #ffffff;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #7c7fff, #a78bfa);
+}
+
+.status {
+  font-size: 0.85rem;
+  color: #a5b4fc;
+  padding: 8px 12px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
